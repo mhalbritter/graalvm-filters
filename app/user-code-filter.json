@@ -1,0 +1,15 @@
+{
+    "rules": [
+        {
+            "excludeClasses": "**"
+        },
+        {
+            "includeClasses": "graal.filter.test.**"
+        }
+    ],
+    "regexRules": [
+        {
+            "excludeClasses": "\\Qgraal.filter.test.\\E.*Test"
+        }
+    ]
+}
