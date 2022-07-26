@@ -110,7 +110,7 @@ run:8, A (graal.filter.test)
 main:5, App (graal.filter.test)
 ```
 
-Note that `typeReachable` now points to `A`, because it is the first included class from the top of the stack.
+The `typeReachable` clause now points to `A`, because it is the first included class from the top of the stack.
 
 Including both `A` and `C` with a config like this:
 
