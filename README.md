@@ -52,7 +52,7 @@ generates this `reflection-config.json`:
 ]
 ```
 
-The call stack looks like this (`invokeB:15, C`) is the reflection call to get the method on class `B`:
+The call stack looks like this (`invokeB:16, C`) is the reflection call to get the method on class `B`:
 
 ```
 invokeB:16, C (graal.filter.test)
