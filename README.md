@@ -96,6 +96,48 @@ results in this `reflect-config.json`:
 
 Note that `typeReachable` now points to `A`, as this is the nearest included class in our config.
 
+Including both `A` and `C` with a config like this:
+
+```json
+{
+    "rules": [
+        {
+            "excludeClasses": "**"
+        },
+        {
+            "includeClasses": "graal.filter.test.**"
+        }
+    ]
+}
+```
+
+results in this `reflect-config.json`:
+
+```json
+[
+    {
+        "name": "graal.filter.test.B",
+        "condition": {
+            "typeReachable": "graal.filter.test.C"
+        },
+        "methods": [
+            {
+                "name": "<init>",
+                "parameterTypes": [
+                ]
+            },
+            {
+                "name": "someMethod",
+                "parameterTypes": [
+                ]
+            }
+        ]
+    }
+]
+```
+
+as `C` is the nearest included class in the call stack when the reflection is recorded.
+
 If neither `A` nor `C` is in the `includeClasses`, no reflection call is recorded.
 
 **Recommendation**: Exclude all classes, and only include classes from your production packages:
