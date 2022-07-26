@@ -3,7 +3,7 @@
 A small application which contains a reflection call.
 The call stack is as follows:
 
-`Main` -> static call-> `A` -> static call -> `C` -> reflect call -> `B`
+`Main` -> static call -> `A` -> static call -> `C` -> reflect call -> `B`
 
 There is a test called `AppTest` in the test sources which uses reflection to create an instance of `App` and calls the `main` method.
 
