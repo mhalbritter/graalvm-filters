@@ -10,7 +10,7 @@ There is a test called `AppTest` in the test sources which uses reflection to cr
 # user-code-filter.json
 
 Influences the class in the `typeReachable` clause.
-The nearest included class in the reflection stack trace is used.
+The nearest included class in the call stack leading to the reflection call is used.
 
 Example: Setting the filter to this:
 
