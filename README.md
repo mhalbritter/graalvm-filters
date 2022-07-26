@@ -52,7 +52,15 @@ generates this `reflection-config.json`:
 ]
 ```
 
-Note that the `typeReachable` is set to `graal.filter.test.C`.
+The call stack looks like this (`invokeB:15, C`) is the reflection call to get the method on class `B`:
+
+```
+invokeB:16, C (graal.filter.test)
+run:8, A (graal.filter.test)
+main:5, App (graal.filter.test)
+```
+
+The first included class from the top of the stack is `C`, therefore the `typeReachable` clause is set to `C`.
 
 Setting the filter to this:
 
@@ -94,7 +102,15 @@ results in this `reflect-config.json`:
 ]
 ```
 
-Note that `typeReachable` now points to `A`, as this is the nearest included class in our config.
+because the call stack looks like this:
+
+```
+invokeB:16, C (graal.filter.test)
+run:8, A (graal.filter.test)
+main:5, App (graal.filter.test)
+```
+
+Note that `typeReachable` now points to `A`, because it is the first included class from the top of the stack.
 
 Including both `A` and `C` with a config like this:
 
@@ -138,7 +154,7 @@ results in this `reflect-config.json`:
 
 as `C` is the nearest included class in the call stack when the reflection is recorded.
 
-If neither `A` nor `C` is in the `includeClasses`, no reflection call is recorded.
+If neither `A` nor `C` nor `App` is in the `includeClasses`, no reflection call is recorded.
 
 **Recommendation**: Exclude all classes, and only include classes from your production packages:
 
